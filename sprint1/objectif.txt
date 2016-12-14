@@ -1,0 +1,2 @@
+Affichage d'une page .html avec un tableau contenant 5 évenements arméniens.
+Affichage d'une carte google au-dessus du tableau.
