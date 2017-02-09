@@ -1,3 +1,2 @@
-Affichage d'une page .html avec un tableau contenant 5 évenements arméniens.
-Affichage d'une carte google au-dessus du tableau.
-Faire quelques tests sur bootstrap
+﻿Affichage d'une page .html avec un tableau contenant 3 évenements arméniens.
+Affichage d'un exemple de page bootstrap WSSP.

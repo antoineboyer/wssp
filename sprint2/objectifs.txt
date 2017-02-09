@@ -1,0 +1,2 @@
+Afficher une carte google Map sur son site Internet et ajouter des lieux sur la carte 
+cf https://openclassrooms.com/courses/google-maps-sur-votre-page-web

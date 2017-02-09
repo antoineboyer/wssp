@@ -1,0 +1,4 @@
+L'objectif est d'afficher une carte google map affichant l'ensemble des évenements de la BDD.
+
+Chaque évenement sera représenté par un pointeur dont la couleur dépend de la date et la forme de la magnitude
+
