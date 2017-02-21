@@ -1,49 +1,81 @@
 <?php
-//(1) On inclut la classe de Google Maps pour générer ensuite la carte.
+//API GOOGLE MAP
 require('/../API/GoogleMapAPI.class.php');
 
-//(2) On crée une nouvelle carte; Ici, notre carte sera $map.
+//Creating a new map : $map.
 $map = new GoogleMapAPI('map');
 
-//(3) On ajoute la clef de Google Maps.
+//Add key Google Maps.
 $map->setAPIKey('AIzaSyBH03AAep0MnWcLF3PfvBnZ-cpjpFoRXLA');
     
-//(4) On ajoute les caractéristiques que l'on désire à notre carte.
+// Designing the map
 $map->setWidth("800px");
 $map->setHeight("500px");
 $map->setCenterCoords ('45', '40');
 $map->setZoomLevel (8);
-
-//(4-1) Possibilité d'affichage de l'échelle
 $map->enableScaleControl();  
-
 $map->disableDirections();
-//Fait une requête SQL et créer les différents pointeurs.
 
-//On récupère l'heure actuelle
+//Get the date of today
 date_default_timezone_set('Europe/London');
 
-$now = date_create(date('Y-m-d H:i:s', time()));
+$nowDateTime = date_create(date('Y-m-d H:i:s', time()));
+$nowDate = date('Y-m-d', time());
 
+//Defining default start_date, end_date, start_mag, end_mag
+$start_date='0001-01-01';
+$end_date= $nowDate;
+$start_mag=3;
+$end_mag=7;
+//Connection to the database
 try
 {
-   // On se connecte à MySQL
    $bdd = new PDO('mysql:host=localhost;dbname=wssp;charset=utf8', 'root', '');
 }
 
 catch(Exception $e)
 {
-   // En cas d'erreur, on affiche un message et on arrête tout
         die('Erreur : '.$e->getMessage());
 }
 
-$reponse = $bdd->query('SELECT * FROM events');
+//Building the request
+$request = 'SELECT * FROM events';
+if(isset($_POST['action']))
+{
+	if($_POST['action']=='Search')
+	{
+		if(isset($_POST['start_date']) && isset($_POST['end_date']))
+		{
+			$start_date =$_POST['start_date'];
+			$end_date =$_POST['end_date'];
+			// Une idée simple de comparaison des dates...
+			/*
+			$start = new DateTime($start); $start = $start->format('Ymd'); $end =$_POST['end_date'];$end = new DateTime($end);$end = $end->format('Ymd'); $diff = $end - $start*/
+			$request=$request.' WHERE date BETWEEN \''.$start_date.'\' AND \''.$end_date.'\'';
+		}
 
+		if(isset($_POST['start_mag']) && isset($_POST['end_mag'])) 
+		{
+			$start_mag =(int)$_POST['start_mag'];
+			$end_mag =(int)$_POST['end_mag']; 
+			if($start_mag > 1 && $end_mag>=$start_mag)
+			{	
+				$request = $request.' AND mg>='.$start_mag.' AND mg <='.$end_mag;
+			}
+		}
+	}
+}
+
+$request=$request." ORDER BY date DESC";
+echo $request;
+$reponse = $bdd->query($request);
+//Creating markers 1 by 1
+firstEvent=true; //if(firstEvent){marqueur rouge clignotant} else{normal}
 while ($donnees = $reponse->fetch())
 {
 	$date = $donnees['date'];
 	$date1 = date_create($date);
-	$interval = date_diff($date1, $now)->format('%a');
+	$interval = date_diff($date1, $nowDateTime)->format('%a');
 	$lat = $donnees['lat'];
 	$lon = $donnees['lon'];
 	$mag = $donnees['mg'];
@@ -72,6 +104,47 @@ $reponse->closeCursor();
 	
 	<body onload="onLoad();">
 		<?php $map->printMap(); ?>
+		<form action="carte.php" method="post">
+			<fieldset>
+				<legend>Magnitude:</legend>
+				<label for="start_mag">From - </label>
+				<select name="start_mag" id="start_mag">
+					<option value=""></option>
+					<option value="1" <?php if($start_mag==1) echo 'selected' ?> >1</option>
+					<option value="2" <?php if($start_mag==2) echo 'selected' ?>>2</option>
+					<option value="3" <?php if($start_mag==3) echo 'selected' ?>>3</option>
+					<option value="4" <?php if($start_mag==4) echo 'selected' ?>>4</option>
+					<option value="5" <?php if($start_mag==5) echo 'selected' ?>>5</option>
+					<option value="6" <?php if($start_mag==6) echo 'selected' ?>>6</option>
+					<option value="7" <?php if($start_mag==7) echo 'selected' ?>>7</option>
+					<option value="8" <?php if($start_mag==8) echo 'selected' ?>>8</option>
+					<option value="9" <?php if($start_mag==9) echo 'selected' ?>>9</option>
+				</select>
+				<label for="end_mag">To - </label>
+				<select name="end_mag" id="end_mag">
+					<option value=""></option>
+					<option value="1" <?php if($end_mag==1) echo 'selected' ?>>1</option>
+					<option value="2" <?php if($end_mag==2) echo 'selected' ?>>2</option>
+					<option value="3" <?php if($end_mag==3) echo 'selected' ?>>3</option>
+					<option value="4" <?php if($end_mag==4) echo 'selected' ?>>4</option>
+					<option value="5" <?php if($end_mag==5) echo 'selected' ?>>5</option>
+					<option value="6" <?php if($end_mag==6) echo 'selected' ?>>6</option>
+					<option value="7" <?php if($end_mag==7) echo 'selected' ?>>7</option>
+					<option value="8" <?php if($end_mag==8) echo 'selected' ?>>8</option>
+					<option value="9" <?php if($end_mag==9) echo 'selected' ?>>9</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<legend>Date:</legend>
+				<label for="start_date">- From</label>
+				<input type="date" name="start_date" min="0000-00-00" value ="<?php echo $start_date ?>"  >
+				<label for="end_date">- To</label>
+				<input type="date" name="end_date" max="2100-00-00" value = "<?php echo $end_date ?>"><br>
+			</fieldset>
+			<input type="submit" name="action" value="Search">
+			<input type="submit" name="action" value="Everything">
+			<input type="reset"  value="Clear" />
+		</form>
 	</body>
 	
 </html>

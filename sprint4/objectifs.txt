@@ -2,3 +2,6 @@ L'objectif est d'afficher une carte google map affichant l'ensemble des éveneme
 
 Chaque évenement sera représenté par un pointeur dont la couleur dépend de la date et la forme de la magnitude
 
+- bouton everything
+- dernier event en rouge 
+- possibilité de mesurer les distances sur google map ... 
