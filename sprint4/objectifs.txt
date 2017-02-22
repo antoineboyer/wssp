@@ -5,3 +5,10 @@ Chaque évenement sera représenté par un pointeur dont la couleur dépend de l
 - bouton everything
 - dernier event en rouge 
 - possibilité de mesurer les distances sur google map ... 
+
+
+
+- h = height and not hours !!!!
+- two DataBase (1/ historical - 2/ 2015-2016 )
+- Intensity (calculation)
+- Maybe a formular to add event

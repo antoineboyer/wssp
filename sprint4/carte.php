@@ -23,10 +23,11 @@ $nowDateTime = date_create(date('Y-m-d H:i:s', time()));
 $nowDate = date('Y-m-d', time());
 
 //Defining default start_date, end_date, start_mag, end_mag
-$start_date='0001-01-01';
+
+$start_date = date('Y-m-d', strtotime('-2 year'));
 $end_date= $nowDate;
-$start_mag=3;
-$end_mag=7;
+$start_mag=1;
+$end_mag=8;
 //Connection to the database
 try
 {
@@ -70,24 +71,34 @@ $request=$request." ORDER BY date DESC";
 echo $request;
 $reponse = $bdd->query($request);
 //Creating markers 1 by 1
-firstEvent=true; //if(firstEvent){marqueur rouge clignotant} else{normal}
+$firstEvent=true; 
 while ($donnees = $reponse->fetch())
 {
 	$date = $donnees['date'];
-	$date1 = date_create($date);
-	$interval = date_diff($date1, $nowDateTime)->format('%a');
 	$lat = $donnees['lat'];
 	$lon = $donnees['lon'];
 	$mag = $donnees['mg'];
-	$taille = intval($mag);
-	$couleur = "gris";
-	if($interval <=31) {$couleur = "rouge";}
-	elseif($interval <=365) {$couleur = "jaune";}
-	else {$couleur = "gris";}
-	
-	$map->addMarkerIcon( "/wssp/images/".$couleur.$taille.".png", "/wssp/images/".$couleur.$taille.".png", 0, 0, 0, 0); 
-	$info = "<b>Time: </b>".$date."<br><b>Lat/Lon: </b>".$lat."/".$lon."<br><b>Magnitude: </b>".$mag;
-	$map->addMarkerByCoords( $lon, $lat , "", $info, ""); 
+	if ($firstEvent)
+	{
+		$map->addMarkerIcon( "/wssp/images/icon_earthquake.gif", "/wssp/images/icon_earthquake.gif", 0, 0, 0, 0); 
+		$info = "<b>Time: </b>".$date."<br><b>Lat/Lon: </b>".$lat."/".$lon."<br><b>Magnitude: </b>".$mag;
+		$map->addMarkerByCoords( $lon, $lat , "", $info, "");
+		$firstEvent = false;
+	}
+	else
+	{
+		$date1 = date_create($date);
+		$interval = date_diff($date1, $nowDateTime)->format('%a');
+		$taille = intval($mag);
+		$couleur = "gris";
+		if($interval <=31) {$couleur = "rouge";}
+		elseif($interval <=365) {$couleur = "jaune";}
+		else {$couleur = "gris";}
+
+		$map->addMarkerIcon( "/wssp/images/".$couleur.$taille.".png", "/wssp/images/".$couleur.$taille.".png", 0, 0, 5, 0); 
+		$info = "<b>Time: </b>".$date."<br><b>Lat/Lon: </b>".$lat."/".$lon."<br><b>Magnitude: </b>".$mag;
+		$map->addMarkerByCoords( $lon, $lat , "", $info, "");
+	}
 }
 
 $reponse->closeCursor();
