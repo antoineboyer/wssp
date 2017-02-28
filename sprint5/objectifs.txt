@@ -1,0 +1,5 @@
+- Ajouter intensité?
+- Mettre en place les 2 BDD (historiques) et micro sismicité ou une seule mais avec 2 fonctionnements différents
+- Faire au moins 3 pages différentes : une page présentant WSSP succintement
+																			 une page avec une carte avec les tremblements de terre historiques
+ 																			 une page de recherche avec les tremblements de terre actuels.

@@ -30,8 +30,13 @@
       .row.content {height:auto;} 
     }
 
+
 /* Pour mettre le titre en blanc */
 #title h1 {
+   color:white;
+}
+
+#title h2 {
    color:white;
 }
 
