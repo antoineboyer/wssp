@@ -3,3 +3,8 @@
 - Faire au moins 3 pages différentes : une page présentant WSSP succintement
 																			 une page avec une carte avec les tremblements de terre historiques
  																			 une page de recherche avec les tremblements de terre actuels.
+																
+- Faire des boutons avec last hour, last week, last month, last year ??? 
+- Faire un bouton ou on peut directement rentrer les données... 
+- Faire un onglet delete event
+- sécuriser add event et delete event avec un mot de passe 

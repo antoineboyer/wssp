@@ -4,6 +4,7 @@ function navbar($currentLink){
 	$historical="";
 	$recent="";
 	$contact="";
+	$add="";
 	if($currentLink=='about')
 	{
 		$about="class=\"active\"";
@@ -19,6 +20,10 @@ function navbar($currentLink){
 	else if ($currentLink=='contact')
 	{
 		$contact="class=\"active\"";
+	}
+		else if ($currentLink=='add')
+	{
+		$add="class=\"active\"";
 	}
 	$html =' 
 			<div class="container-fluid">
@@ -39,14 +44,14 @@ function navbar($currentLink){
 	$html .='<li '.$about.'><a href="/wssp/sprint5/about/about.php">About Us</a></li>';
 	$html .='<li '.$historical.'><a href="/wssp/sprint5/historical/historical.php">Historical Events</a></li>';
 	$html .='<li '.$recent.'><a href="/wssp/sprint5/recent/recent.php">Recent Events</a></li>';
+	$html .='<li '.$add.'><a href="/wssp/sprint5/add/add.php">Add Events</a></li>';
 	$html .='<li '.$contact.'><a href="/wssp/sprint5/contact/contact.php">Contact</a></li>';
 
 
 	$html .='  </ul>
 					</div>
 				</div>
-			</div>  
-		</nav>';
+			</div>';
 	echo $html;
 	}
 ?>

@@ -106,7 +106,7 @@ $reponse->closeCursor();
 	 <?php $map->printHeaderJS(); ?>
 	  <?php $map->printMapJS(); ?>
 	<div class="row content">
-		<div class="col-sm-2 sidenav">
+		<div class="col-sm-2 sidenav"> 
 			
 		<form action="recent.php" method="post">
 			<div class="form-group">
