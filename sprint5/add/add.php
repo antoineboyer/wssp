@@ -18,7 +18,7 @@
 	//Function of initialization of variables
 	function variable($param)
 	{
-		$obj="";
+		$obj="5";
 		if(isset($_POST[$param]))
 		{
 		$obj = $_POST[$param];
@@ -27,14 +27,14 @@
 	}
 	//Creation of $table which contain sismic variable
 	$table = array();
-	$table['date']   = array(variable('date'),'date');
-	$table['time']   = array(variable('time'),'time');
-	$table['mg']     = array(variable('mg'),'magnitude');
-	$table['typemg'] = array(variable('typemg'),'type of magnitude');
-	$table['lat']    = array(variable('lat'),'latitude'); 
-	$table['lon']    = array(variable('lon'),'longitude'); 
-	$table['depth']  = array(variable('depth'),'depth');
-	$table['region'] = array(variable('region'),'region');
+	$table['date']   = array(variable('date'),'Date');
+	$table['time']   = array(variable('time'),'Time');
+	$table['mg']     = array(variable('mg'),'Magnitude');
+	$table['typemg'] = array(variable('typemg'),'Type of Magnitude');
+	$table['lat']    = array(variable('lat'),'Latitude'); 
+	$table['lon']    = array(variable('lon'),'Longitude'); 
+	$table['depth']  = array(variable('depth'),'Depth');
+	$table['region'] = array(variable('region'),'Region');
 	
 
 	
@@ -94,6 +94,7 @@
 													<option value="md" <?php if($table['typemg'][0]=="md") echo 'selected' ?> >MD</option>
 													<option value="mb" <?php if($table['typemg'][0]=="mb") echo 'selected' ?> >MB</option>
 													<option value="ms" <?php if($table['typemg'][0]=="ms") echo 'selected' ?> >MS</option>
+													<option value="ks" <?php if($table['typemg'][0]=="ks") echo 'selected' ?> >KS</option>
 												</select>
 											</div>
 										</div>
@@ -138,7 +139,7 @@
 									<div class="form-group">
   									<label class="col-md-4 control-label"></label>
 										<div class="col-md-4">
-											<button type="submit" class="btn btn-warning" name="submit">Send <span class="glyphicon glyphicon-send"></span></button>
+											<button type="submit" class="btn btn-success" name="submit">Add <span class="glyphicon glyphicon-send"></span></button>
 										</div>
 									</div>
 										
