@@ -10,7 +10,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		
 </head>
+<?php
 
+?>
 <body onload="onLoad();">
  	<nav class="navbar navbar-inverse">
 	<?php include("/../navbar.php"); ?>	
