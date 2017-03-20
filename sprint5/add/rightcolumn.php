@@ -1,5 +1,5 @@
 <?php
-//Send an expetion if empty box
+//SEND AN EXCEPTION IF A BOX IS EMPTY
 function exception1($param, $text)
 {
 	if (empty($param))
@@ -7,16 +7,17 @@ function exception1($param, $text)
 			throw new Exception('<p>Please, fill the <mark>'.$text.'</mark> box</p>');
 		}
 }
-
+// FUNCTION WHICH DISPLAY THE RIGHT COLUMN
 function confirm($table)
 {
-	//Page => Nothing
+	// IF NO EVENT SUBMITED
 	if(!isset($_POST['submit']))
 	{
+		//IF AN EVENT WAS ADDED BEFORE
 		if(isset($_POST['confirm']))
 		{
 			
-			$datetime = $_POST['date1']." ".$_POST['time1'].":00";
+			$datetime = $_POST['date']." ".$_POST['time'].":00";
 			echo $datetime;
 			try
 			{
@@ -31,44 +32,39 @@ function confirm($table)
 			
 			$req->execute(array(
 			'date' => $datetime,
-			'mg' => $_POST['mg1'],
-			'typemg' => $_POST['typemg1'],
-			'depth' => $_POST['depth1'],
-			'lat' => $_POST['lat1'],
-			'lon' => $_POST['lon1'],
-			'region' => $_POST['region1'],
+			'mg' => $_POST['mg'],
+			'typemg' => $_POST['typemg'],
+			'depth' => $_POST['depth'],
+			'lat' => $_POST['lat'],
+			'lon' => $_POST['lon'],
+			'region' => $_POST['region'],
 			'manauto' => ''
 			));
 			
-			//$request='INSERT INTO events (date,mg,typemg,depth,lat,lon,region,manauto) VALUES (\''.$datetime.'\',\''.$_POST['mg1'].'\',\''.$_POST['typemg1'].'\',\''.$_POST['lat1'].'\',\''.$_POST['lon1'].'\',\''.$_POST['depth1'].'\',\''.$_POST['region1'].'\',\'\')';
-			//$bdd->exec($request);
-			
-			//echo $request;
 			echo '<h3>Well done, you just add this event</h3>';
 			echo '<hr>';
 			echo '<h4> <abbr>DateTime</abbr> : '.$datetime.' </h4>';
-			echo '<h4> Magnitude :'.$_POST['mg1'].' </h4>';
-			echo '<h4> Type of Magnitude :'.$_POST['typemg1'].' </h4>';
-			echo '<h4> Latitude :'.$_POST['lat1'].' </h4>';
-			echo '<h4> Longitude :'.$_POST['lon1'].' </h4>';
-			echo '<h4> Depth :'.$_POST['depth1'].' </h4>';
-			echo '<h4> Region :'.$_POST['region1'].' </h4>';
+			echo '<h4> Magnitude :'.$_POST['mg'].' </h4>';
+			echo '<h4> Type of Magnitude :'.$_POST['typemg'].' </h4>';
+			echo '<h4> Latitude :'.$_POST['lat'].' </h4>';
+			echo '<h4> Longitude :'.$_POST['lon'].' </h4>';
+			echo '<h4> Depth :'.$_POST['depth'].' </h4>';
+			echo '<h4> Region :'.$_POST['region'].' </h4>';
 			 
 		}
-		// Faire une page avec nothing
 		echo '<h3>Waiting for a new Event :) </h3>';
 	  
 	}
 	
+		//IF EVENT SUBMITED
 	else
 	{
-		//Page => Error
+		// SEE IF THERE IS AN EXCEPTION (SEE FUNCTION EXCEPTION1 ABOVE)
 		foreach ($table as $param)
 		{
 			exception1($param[0],$param[1]);
 		}
-		//Vérifier pour la date ??? 
-		// Page => Add to the Data Base
+		//IF NO EXCEPTION, PROPOSE TO ADD THE EVENT
 		
 		echo '<h3>Confirm the Event </h3>';
 	  echo '<hr>';
@@ -86,18 +82,19 @@ function confirm($table)
       echo "<td>";
 			echo	htmlspecialchars($param[0]);
 			echo "</td>";
-			echo "<input type=\"hidden\" name=\"".$cle."1\" value=\"".htmlspecialchars($param[0])."\">";
+			echo "<input type=\"hidden\" name=\"".$cle."\" value=\"".htmlspecialchars($param[0])."\">";
       echo "</tr>";
 		}              
     echo "</tbody>";
     echo "</table>";
+		  	echo"	<div class=\"col-md-4\">
+							<input type=\"submit\" class=\"btn btn-success\" name=\"confirm\" value=\"Confirm\">
+							<input type=\"submit\" class=\"btn btn-danger\" name=\"cancel\" value=\"Cancel\">
+							</div>";
 		echo "</div>";
 		
 		
-  	echo"	<div class=\"col-md-4\">
-							<input type=\"submit\" class=\"btn btn-success\" name=\"confirm\" value=\"Confirm\">
-							<input type=\"submit\" class=\"btn btn-danger\" name=\"cancel\" value=\"Cancel\">
-				</div>";
+
 		
 		echo "</form>";
 	}
@@ -105,7 +102,7 @@ function confirm($table)
 	
 }
 
-
+// FUNCTION CONFIRM (SEE ABOVE) WITH TABLE $TABLE
 try
 {
 	confirm($table);

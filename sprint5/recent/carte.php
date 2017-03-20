@@ -9,7 +9,7 @@ $map = new GoogleMapAPI('map');
 $map->setAPIKey('AIzaSyBH03AAep0MnWcLF3PfvBnZ-cpjpFoRXLA');
     
 // Designing the map
-$map->setWidth("1000px");
+$map->setWidth("550px");
 $map->setHeight("450px");
 $map->setCenterCoords ('45', '40');
 $map->setZoomLevel (8);
@@ -80,7 +80,7 @@ while ($donnees = $reponse->fetch())
 	$mag = $donnees['mg'];
 	if ($firstEvent)
 	{
-		$map->addMarkerIcon( "/wssp/images/icon_earthquake.gif", "/wssp/images/icon_earthquake.gif", 0, 0, 0, 0); 
+		$map->addMarkerIcon( "/wssp/images/icon_earthquake.gif", "/wssp/images/icon_earthquake.gif", 0, 0, 5, 0); 
 		$info = "<b>Time: </b>".$date."<br><b>Lat/Lon: </b>".$lat."/".$lon."<br><b>Magnitude: </b>".$mag;
 		$map->addMarkerByCoords( $lon, $lat , "", $info, "");
 		$firstEvent = false;
@@ -93,7 +93,7 @@ while ($donnees = $reponse->fetch())
 		$couleur = "gris";
 		if($interval <=31) {$couleur = "rouge";}
 		elseif($interval <=365) {$couleur = "jaune";}
-		else {$couleur = "gris";}
+		else {$couleur = "bleu";}
 
 		$map->addMarkerIcon( "/wssp/images/".$couleur.$taille.".png", "/wssp/images/".$couleur.$taille.".png", 0, 0, 5, 0); 
 		$info = "<b>Time: </b>".$date."<br><b>Lat/Lon: </b>".$lat."/".$lon."<br><b>Magnitude: </b>".$mag;
@@ -105,9 +105,10 @@ $reponse->closeCursor();
 ?>
 	 <?php $map->printHeaderJS(); ?>
 	  <?php $map->printMapJS(); ?>
-	<div class="row content">
-		<div class="col-sm-2 sidenav"> 
-			
+	<div class="row">
+		<br>
+		<div class="col-sm-2"> 
+			<div class="well">
 		<form action="recent.php" method="post">
 			<div class="form-group">
 				<legend>Magnitude:</legend>
@@ -149,12 +150,69 @@ $reponse->closeCursor();
 			<input type="submit" class="btn btn-default" name="action" value="Everything">
 			<!--<input type="reset" class="btn btn-default"  value="Clear" />-->	
 		</form>	
-			
+			</div>
  		</div>
-		<div class="col-sm-10 container">
-		<br>
+		<div class="col-sm-6 container">
+			<div class="well">
+			<h4>Map of Event</h4>
+				<hr>
 				<?php $map->printMap(); ?>
 		<br>
+				<p>
+				<svg version="1.1" width="19px" height="19px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#FF3737" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2"></circle>
+				</svg>
+					Last Month          
+				
+				<svg version="1.1" width="19px" height="19px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffff00" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2"></circle>
+				</svg>
+					Last Year
+					
+				<svg version="1.1" width="19px" height="19px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#7F7F7F" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2"></circle>
+				</svg>
+					Later &nbsp &nbsp &nbsp &nbsp &nbsp     
+					
+
+					
+					<svg version="1.1" width="11px" height="11px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					
+					<svg version="1.1" width="13px" height="12px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					<svg version="1.1" width="14px" height="14px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					<svg version="1.1" width="17px" height="16px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					<svg version="1.1" width="19px" height="18px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					<svg version="1.1" width="21px" height="20px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+					
+					<svg version="1.1" width="23px" height="22px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
+					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
+				</svg>
+				Size from 1 to 7
+				</p>
+			</div>
+ 		</div>
+		<div class="col-sm-4 container">
+			<div class="well">
+				<h4>Table of Event</h4>
+				<hr>
+			</div>
  		</div>
 	</div>
    
