@@ -10,7 +10,7 @@
 			echo '<h3>Events Deleted </h3>';
 			echo '<ul class=\'list-group\'>';
 			$todelete = array();
-			for ($i = 1; $i <= 10; $i++)
+			for ($i = 1; $i <= 10000; $i++) // DO SOMETHING BETTER 
 			{
 				if(isset($_POST[$i]))
 				{
@@ -88,12 +88,12 @@
 			}
 		}
 	
-		$request=$request." ORDER BY date LIMIT 0,8";
+		$request=$request." ORDER BY date"; // LIMIT 0,8
 		//echo $request;
 		$reponse = $bdd->query($request);
 		
 		echo '<h3>Choose events to delete </h3>';
-		echo '<p>This table will just display the 8 firsts events (order by date)</p>';
+		//echo '<p>This table will just display the 8 firsts events (order by date)</p>';
 	  echo '<hr>';
 		echo '<form action=\'delete.php\' class=\'well form-horitzontal\' method=\'post\'>';
 		echo '<div class=\'form-group\'>';	
@@ -107,7 +107,7 @@
 				<thead>
 					<tr>
 						<th class=\'col-md-4\'>TIME (UTC)</th>
-						<th class=\'col-md-1\'>MG</th>
+						<th class=\'col-md-1\'>M</th>
 						<th class=\'col-md-2\'>LAT/LONG</th>
 						<th class=\'col-md-3\'>REGION</th>
 						<th class=\'col-md-1\'>DELETE</th>

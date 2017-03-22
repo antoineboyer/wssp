@@ -5,10 +5,8 @@
       <tr>
         <th class="col-md-2">TIME (UTC)</th>
         <th class="col-md-1">MAGNITUDE (ML)</th>
-        <th class="col-md-1">DEPTH (KM)</th>
         <th class="col-md-1">LAT/LONG (DEGREE)</th>
         <th class="col-md-2">REGION</th>
-        <th class="col-md-1">M/A</th>
       </tr>
     </thead>
     <tbody>

@@ -9,7 +9,7 @@ $map = new GoogleMapAPI('map');
 $map->setAPIKey('AIzaSyBH03AAep0MnWcLF3PfvBnZ-cpjpFoRXLA');
     
 // Designing the map
-$map->setWidth("550px");
+$map->setWidth("800px");
 $map->setHeight("450px");
 $map->setCenterCoords ('45', '40');
 $map->setZoomLevel (8);
@@ -107,7 +107,7 @@ $reponse->closeCursor();
 	  <?php $map->printMapJS(); ?>
 	<div class="row">
 		<br>
-		<div class="col-sm-2"> 
+		<div class="col-sm-3"> 
 			<div class="well">
 		<form action="recent.php" method="post">
 			<div class="form-group">
@@ -152,7 +152,7 @@ $reponse->closeCursor();
 		</form>	
 			</div>
  		</div>
-		<div class="col-sm-6 container">
+		<div class="col-sm-9 container">
 			<div class="well">
 			<h4>Map of Event</h4>
 				<hr>
@@ -204,14 +204,8 @@ $reponse->closeCursor();
 					<svg version="1.1" width="23px" height="22px" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;">
 					<circle cx="50%" cy="50%" r="40%" fill="#ffffff" stroke="#595959" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="1"></circle>
 				</svg>
-				Size from 1 to 7
+				Magnitude from 1 to 7
 				</p>
-			</div>
- 		</div>
-		<div class="col-sm-4 container">
-			<div class="well">
-				<h4>Table of Event</h4>
-				<hr>
 			</div>
  		</div>
 	</div>

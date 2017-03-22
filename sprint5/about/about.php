@@ -37,7 +37,7 @@
 				<img src="/wssp/images/wssp1.jpg" class="img-responsive" alt="wssp1">
 			</div>
 			<div class="col-sm-6">
-				<p class="text-justify">Western Survey for Seismic Protection --- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet augue elit, ac sodales purus euismod a. Nullam ultricies, nibh sed convallis lacinia, est ligula fringilla lorem, in vulputate arcu tortor ac velit. Sed scelerisque dignissim imperdiet. Praesent condimentum tellus mi, eget efficitur tellus dignissim vel. Aliquam ut commodo lorem. Morbi venenatis egestas ligula quis elementum. Aliquam ut accumsan nulla. Sed sagittis ante in diam ultrices dictum. Integer vehicula risus gravida magna gravida rhoncus id id erat. Vestibulum elit odio, facilisis in ante in, tempus euismod lorem. Quisque consectetur interdum tellus a dapibus. Etiam in porta lacus. Duis blandit cursus diam, ac vulputate orci porta eu. Suspendisse potenti. Sed ut ex nec velit pellentesque pulvinar. Duis sed lorem a sem egestas porta at eu lorem. </p>
+				<p class="text-justify">A completer par le WSSP. </p>
 			</div>
 		</div>
 		<h4>NSSP</h4>

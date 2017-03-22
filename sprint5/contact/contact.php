@@ -22,20 +22,20 @@
 					
             <div class="well">
 								
-                <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Adress:</h3>               
+                <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Address:</h3>               
                 <p style="margin-top:6%;line-height:35%">Garni Geophysical Observatory - Garni, 2215, Arménie</p>
                 <br />
                 <br />
-                <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> E-Mail Adress:</h3>
+                <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> E-mail adress:</h3>
                 <p style="margin-top:6%;line-height:35%">garni@gmail.com</p>
                 <br />
                 <br />
                 <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Telephone Number</h3>
-                <p style="margin-top:6%;line-height:35%">00000000</p>
+                <p style="margin-top:6%;line-height:35%">+374 51910121</p>
                 <br />
                 <br />
-                <h3 style="line-height:20%;"><i class="fa fa-yelp fa-1x" style="line-height:6%;color:#339966"></i> Destek Merkezi:</h3>
-                <p style="margin-top:6%;line-height:35%"><a href="siteadresi.com/destek">website</a></p>
+                <h3 style="line-height:20%;"><i class="fa fa-yelp fa-1x" style="line-height:6%;color:#339966"></i> WebSite of NSSP:</h3>
+                <p style="margin-top:6%;line-height:35%"><a href="http://www.nssp-gov.am/index_eng.htm">NSSP</a></p>
             </div>
         </div>
         <div class="col-sm-6">

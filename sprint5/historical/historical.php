@@ -16,7 +16,7 @@
 	<?php navbar("historical"); ?>
 	</nav>
  <div class="container-fluid">
-	 
+	 <p>A développer ... </p>
  </div>
 	
 	 <?php include("/../footer.php"); ?>
