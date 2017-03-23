@@ -37,7 +37,7 @@
 				<img src="/wssp/images/wssp1.jpg" class="img-responsive" alt="wssp1">
 			</div>
 			<div class="col-sm-6">
-				<p class="text-justify">A completer par le WSSP. </p>
+				<p class="text-justify">Under construction </p>
 			</div>
 		</div>
 		<h4>NSSP</h4>

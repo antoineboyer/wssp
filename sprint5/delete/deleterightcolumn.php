@@ -10,7 +10,8 @@
 			echo '<h3>Events Deleted </h3>';
 			echo '<ul class=\'list-group\'>';
 			$todelete = array();
-			for ($i = 1; $i <= 10000; $i++) // DO SOMETHING BETTER 
+			$numberOfEvent = $_POST['numberOfEvent'];
+			for ($i = 1; $i <= $numberOfEvent; $i++) 
 			{
 				if(isset($_POST[$i]))
 				{
@@ -41,7 +42,6 @@
 					$req= $req.'\''.$date.'\''.',';
 				}
 				$req = substr($req,0,-1).')';
-				echo $req;
 				$bdd->exec($req);
 			}
 			echo '<h4>Waiting to delete some Events :) </h4>';
@@ -126,6 +126,8 @@
 			echo '<td class=\'col-md-1\'><input type=\'checkbox\' name=\''.$i.'\' value=\''.$donnees['date'].'\'> </td>';
 			echo '</tr>';
 		}
+		//Hidden value to get the number of event
+		echo '<input type=\'hidden\' name=\'numberOfEvent\' value=\''.$i.'\'>';
 		echo '</tbody>';
   	echo '</table>';
 		echo"	<div class=\"col-md-4\">
